@@ -1,0 +1,15 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+#IDE files 
+.vscode
+.vs
+.suo
+
+#compiled files
+bin
+obj
+Precompiled
+
+#auto gen file
+*.pdb
+*.cache
