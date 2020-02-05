@@ -1,6 +1,7 @@
 ﻿using DemoWebAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,18 +19,39 @@ namespace DemoWebAPI.Controllers
             people.Add(new Person { FirstName = "Linor3", LastName = "Avny3" });
         }
 
+        private static List<Person> studentsLst = new List<Person>() {
+            new Person { FirstName = "Linor", LastName = "Avny" },
+            new Person { FirstName = "Yoav", LastName = "Bar" },
+            new Person { FirstName = "Roni", LastName = "Cohen" },
+            new Person { FirstName = "Suzi", LastName = "Boom" },
+            new Person { FirstName = "Guy", LastName = "Roby" },
+        };
+
+        private static string path = "C:/Dev/linorGIT/RestWebAPI/DemoWebAPI/App_Data/";
+
         // GET
         // postman: http://localhost:50731/api/people/GetAll
-        public List<Person> GetAll()
+        [HttpGet]
+        public HttpResponseMessage RequsetAll()
         {
-            return people;
+
+            HttpResponseMessage result = Request.CreateResponse(HttpStatusCode.OK);
+
+            string ret = System.IO.File.ReadAllText(path + "pepole.json");
+
+            result = Request.CreateResponse<string>(HttpStatusCode.OK, ret, "text/json");
+            return result;
         }
 
         // GET
         // postman: http://localhost:50731/api/people/GetPerson/1
-        public Person GetPerson(int id)
+        //[HttpGet]
+        public HttpResponseMessage GetPerson(int id)
         {
-            return people[id];
+            HttpResponseMessage result = Request.CreateResponse(HttpStatusCode.OK);
+
+            result = Request.CreateResponse<Person>(HttpStatusCode.OK, studentsLst[id], "text/json");
+            return result;
         }
 
         // postman: http://localhost:50731/api/people/getWithActionName
