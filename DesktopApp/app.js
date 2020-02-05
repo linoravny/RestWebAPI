@@ -1,26 +1,32 @@
 
-function getStudentsList() {
-    const container = document.getElementById("container");
+function getUsers() {
+    const tblContainer = document.getElementById("tbl_container");
 
     var request = new XMLHttpRequest();//JSONHttpRequest
-    request.open('GET', 'http://localhost:50731/api/people/RequsetAll', true);
+    request.open('GET', 'http://localhost:50731/api/Users/getUsers', true);
     request.responseType = 'json';
     //request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
    // request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    
-    request.onload = function (res) {
+    var arrOfUsersFileds = ["first_name", "last_name", "email", "country"]
+    request.onload = function () {
 
         var data = JSON.parse(this.response);
-        if (request.status >= 200 && request.status < 400) {
-            data.forEach(student => {
-                const stu = document.createElement('div');
-                stu.setAttribute('class', 'stu');
+        if (data && request.status >= 200 && request.status < 400) {
+            data.forEach(usr => {
+                const tr = document.createElement('tr');
+                tr.setAttribute('class', 'userTr');
+                tblContainer.appendChild(tr);
 
-                const p = document.createElement('p');
-                p.textContent = student.first_name;
+                var td;
+                var text;
 
-                container.appendChild(stu);
-                stu.appendChild(p);
+                arrOfUsersFileds.forEach(key => {
+                    td = document.createElement('td');
+                    text = usr[key];
+                    td.innerText = text;
+                    tr.appendChild(td);
+                });
+
             });
         } else {
             //handel error:

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -12,12 +12,23 @@
 
 <body>
 
-	<h3>Pepole List</h3>
-	<p>Click the button to get List</p>
-	<button onclick="getStudentsList()">Try it</button>
-	<p id="container"></p>
+    <h3>Users List</h3>
+    <p>Click the button to get List</p>
+    <button onclick="getUsers()">Try it</button>
+    <p id="container"></p>
 
-	<script src="app.js"></script>
+    <table id="tbl_container">
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Country</th>
+        </tr>
+    </table>
+
+
+
+    <script src="app.js"></script>
 
 </body>
 </html>
