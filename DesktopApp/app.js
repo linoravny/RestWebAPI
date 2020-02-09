@@ -44,7 +44,7 @@ function addUser() {
         first_name: "some first name",
         last_name: "some last name",
         email: "email@gmail.com",
-        status: ["admin"]
+        status: "admin"
     };
     var params = JSON.stringify(usr);
     //const tblContainer = document.getElementById("tbl_container");
@@ -53,7 +53,7 @@ function addUser() {
     http.open('POST', "http://localhost:50731/api/Users/AddUserToDB", true); //WEB API C# with mongo DB
 
     http.setRequestHeader("Content-Type", "application/json");//;charset=UTF-8
-    http.setRequestHeader("Access-Control-Allow-Origin", "http://localhost");
+    http.setRequestHeader("Access-Control-Allow-Origin", "*");
     //http.setRequestHeader("Access-Control-Allow-Credentials", "true");
     //http.setRequestHeader("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
     //http.setRequestHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
