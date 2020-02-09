@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>JS Vanillas App</title>
+  <title>JS Vanilla App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="styleSheet" href="app.css">
   
@@ -12,17 +12,19 @@
 
 <body>
 
+    
+    <div class="row">
+        <button class="col-5" onclick="getUsers()">Get All Users</button>
+        <button class="col-7" onclick="addUser()">Add User</button>
+    </div>
     <h3>Users List</h3>
-    <p>Click the button to get List</p>
-    <button onclick="getUsers()">Try it</button>
-    <p id="container"></p>
 
     <table id="tbl_container">
         <tr>
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Email</th>
-            <th>Country</th>
+            <th>Status</th>
         </tr>
     </table>
 

@@ -1,2 +1,4 @@
 # RestWebAPI
-MVC with Rest API - Web Application
+Rest API - Web Application
+
+Enable Cors with origion *
